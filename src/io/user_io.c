@@ -12,11 +12,9 @@ void clearScreen(void){
 #endif
 }
 
-void pauseScreen(void){
-    printf("\nPress Entter to continue...");
-    int c;
-    while(( c == getchar()) != '\n' && c != EOF);
-    getchar();
+void pauseScreen() {
+    printf("\nPress Enter to continue...");
+    getchar(); getchar();
 }
 
 void getCurrentDate(char *buf){
@@ -42,7 +40,15 @@ int load_users(User users[]){
     return n;
 }
 
-int load_borrows(Borrow borrows[]){
+void save_user(User *u) {
+    FILE *f = fopen(USERS_FILE, "a");
+    if (!f) { printf("Error: cannot open %s\n", USERS_FILE); return; }
+    fprintf(f, "%d|%s|%s|%s|%s\n",
+            u->id, u->username, u->password, u->name, u->registered_date);
+    fclose(f);
+}
+
+int load_borrow(Borrow borrows[]){
     FILE *f = fopen(BORROWS_FILE, "r");
     if(!f) return 0;
     int n=0;
