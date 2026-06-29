@@ -7,9 +7,9 @@
 #define MAX_BORROWS 200
 
 /*  File paths  */
-#define USERS_FILE "../data/user.txt"
-#define BOOKS_FILE "../data/book.txt"
-#define BORROWS_FILE "../data/borrow.txt"
+#define USERS_FILE "data/user.txt"
+#define BOOKS_FILE "data/book.txt"
+#define BORROWS_FILE "data/borrow.txt"
 
 /*  Structs  */
 typedef struct {
